@@ -51,8 +51,6 @@ $(window).on('beforeunload', function(){
 function joinGame(tankName, tankType, socket){
 	if(tankName != ''){
 		$('#prompt').hide();
-		// вход в игру
-		// что мы передаем ???
-		// и какой event ???
+		socket.emit('joinGame', {name: tankName, type: tankType});
 	}
 }

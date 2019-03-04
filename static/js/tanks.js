@@ -60,8 +60,8 @@ Game.prototype = {
 			cannonAngle: this.localTank.cannonAngle
 		};
 		gameData.tank = t;
+		this.socket.emit('sync', gameData);
 
-		// отправляем данные на сервер ???
 	},      
 
 	receiveData: function(serverData){
@@ -395,10 +395,7 @@ Tank.prototype = {
 		serverBall.x = this.x + deltaX - 5;
 		serverBall.y = this.y - deltaY - 5;
 
-
-		// отправляем данные на сервер
-		// что отправляем ???
-		// какой event ???
+		this.game.socket.emit('shoot', serverBall);
 	}
 
 }
